@@ -1,0 +1,75 @@
+###
+# @name login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+###
+
+# use this value to set the Authorization header in the following requests
+@token = {{login.response.body.token}}
+
+###
+
+# @name getContacts
+GET http://localhost:3000/api/contacts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name getContactById
+GET http://localhost:3000/api/contacts/5
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name createContact
+POST http://localhost:3000/api/contacts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Test",
+  "phone": "123456789",
+  "mail": "john@doe.com"
+}
+
+###
+
+# @name updateContact
+PUT http://localhost:3000/api/contacts/5
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Jane Doe",
+  "phone": "987654321",
+  "mail": "jane@doe.com"
+}
+
+###
+
+# @name deleteContact
+DELETE http://localhost:3000/api/contacts/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name createUser
+
+POST http://localhost:3001/api/user
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+

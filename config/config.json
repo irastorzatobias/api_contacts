@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "contacts",
+    "host": "localhost",
+    "port": 3309,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "contacts_test",
+    "host": "localhost",
+    "port": 3310,
+    "dialect": "postgres"
+  }
+}
