@@ -3,3 +3,6 @@ up:
 
 down:
 	docker-compose -f docker-compose.yml down
+
+env:
+	cp .env.example .env
