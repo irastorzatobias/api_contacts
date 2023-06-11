@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
 
     if ( !password || password.length < 3) {
         return res.status(400).json({
-            error: '`password` is shorter than the minimum allowed length (3)'
+            error: 'password is shorter than the minimum allowed length (3)'
         });
     }
 

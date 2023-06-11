@@ -35,7 +35,6 @@ async function getContactById(req, res) {
 
         return res.json(contact);
     } catch (e) {
-        console.error(e);
         return res.status(500).json({ error: 'An error occurred while retrieving the contact' });
     }
 }
@@ -107,16 +106,12 @@ async function deleteContact(req, res) {
             return res.status(404).json({ error: 'Contact not found' });
         }
 
-        const deletedRows = await Contact.destroy({
+        await Contact.destroy({
             where: {
                 userId: req.user.id,
                 id: req.params.id,
             },
         });
-
-        if (deletedRows === 0) {
-            return res.status(404).json({ error: 'you cannot delete that contact' });
-        }
 
         return res.status(200).send(`Contact ${contact.name} deleted`);
     } catch (e) {
