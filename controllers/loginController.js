@@ -27,7 +27,7 @@ const handleLogin = async (req, res) => {
         id: user.id,
     };
 
-    const token = jwt.sign(userForToken, SECRET, { expiresIn: '1m' });
+    const token = jwt.sign(userForToken, SECRET, { expiresIn: '10m' });
 
     res
         .status(200)

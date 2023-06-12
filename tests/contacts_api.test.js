@@ -196,7 +196,7 @@ describe('Contact API', () => {
         it('updateContact success', async () => {
             const token = await login(api, 'test', 'test');
 
-            const response = await api
+            const updatedUser = await api
                 .put('/api/contacts/1')
                 .set('Authorization', `bearer ${token}`)
                 .send({
@@ -204,13 +204,7 @@ describe('Contact API', () => {
                 })
                 .expect(200);
 
-
-            const contactUpdated = await api
-                .get('/api/contacts/1')
-                .set('Authorization', `bearer ${token}`);
-
-            expect(response.text).toBe('Contact 1 updated');
-            expect(contactUpdated.body.name).toBe('pepa');
+            expect(updatedUser.body.name).toBe('pepa');
         });
 
         it('updateContact not found', async () => {
@@ -252,13 +246,12 @@ describe('Contact API', () => {
                 phone: '3585329897'
             });
 
-            const response = await api
+            await api
                 .delete('/api/contacts/3')
                 .set('Authorization', `bearer ${token}`)
                 .expect(200);
 
 
-            expect(response.text).toBe('Contact hitler deleted');
         });
 
         it('deleteContact not found', async () => {

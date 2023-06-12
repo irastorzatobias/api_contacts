@@ -1,11 +1,11 @@
 ###
 # @name login
-POST http://localhost:3000/api/login
+POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "testuser",
-  "password": "testpassword"
+  "username": "user",
+  "password": "user"
 }
 
 ###
@@ -16,21 +16,21 @@ Content-Type: application/json
 ###
 
 # @name getContacts
-GET http://localhost:3000/api/contacts
+GET http://localhost:3001/api/contacts
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
 
 # @name getContactById
-GET http://localhost:3000/api/contacts/5
+GET http://localhost:3001/api/contacts/1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
 
 # @name createContact
-POST http://localhost:3000/api/contacts
+POST http://localhost:3001/api/contacts
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -43,20 +43,19 @@ Authorization: Bearer {{token}}
 ###
 
 # @name updateContact
-PUT http://localhost:3000/api/contacts/5
+PUT http://localhost:3001/api/contacts/1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Jane Doe",
-  "phone": "987654321",
-  "mail": "jane@doe.com"
+  "name": "TestEDITED5"
+
 }
 
 ###
 
 # @name deleteContact
-DELETE http://localhost:3000/api/contacts/1
+DELETE http://localhost:3001/api/contacts/1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -64,7 +63,7 @@ Authorization: Bearer {{token}}
 
 # @name createUser
 
-POST http://localhost:3001/api/user
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {

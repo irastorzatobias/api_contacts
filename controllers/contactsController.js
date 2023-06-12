@@ -5,7 +5,7 @@ async function findContactByIdAndUser(contactId, userId) {
         where: {
             id: contactId,
             userId: userId,
-        }
+        },
     });
     return contact;
 }
@@ -15,12 +15,14 @@ async function getContacts(req, res) {
         const contacts = await Contact.findAll({
             where: {
                 userId: req.user.id,
-            }
+            },
         });
         return res.json(contacts);
     } catch (e) {
         console.error(e);
-        return res.status(500).json({ error: 'An error occurred while retrieving contacts' });
+        return res
+            .status(500)
+            .json({ error: 'An error occurred while retrieving contacts' });
     }
 }
 
@@ -35,7 +37,9 @@ async function getContactById(req, res) {
 
         return res.json(contact);
     } catch (e) {
-        return res.status(500).json({ error: 'An error occurred while retrieving the contact' });
+        return res
+            .status(500)
+            .json({ error: 'An error occurred while retrieving the contact' });
     }
 }
 
@@ -69,7 +73,9 @@ async function createContact(req, res) {
         return res.status(201).json(contact);
     } catch (e) {
         console.error(e);
-        return res.status(500).json({ error: 'An error occurred while creating the contact' });
+        return res
+            .status(500)
+            .json({ error: 'An error occurred while creating the contact' });
     }
 }
 
@@ -91,7 +97,9 @@ async function updateContact(req, res) {
                 },
             }
         );
-        return res.status(200).send(`Contact ${req.params.id} updated`);
+        const updatedContact = await Contact.findOne({ where: { id: req.params.id } });
+
+        return res.status(200).json(updatedContact);
     } catch (e) {
         console.error(e);
         return res.status(500).send('An error occurred while updating the contact');
@@ -113,7 +121,7 @@ async function deleteContact(req, res) {
             },
         });
 
-        return res.status(200).send(`Contact ${contact.name} deleted`);
+        return res.status(200).end();
     } catch (e) {
         console.error(e);
         return res.status(500).send('An error occurred while deleting the contact');
@@ -125,5 +133,5 @@ module.exports = {
     getContactById,
     createContact,
     updateContact,
-    deleteContact
+    deleteContact,
 };
