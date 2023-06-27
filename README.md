@@ -28,6 +28,11 @@ npm run migrate-test
 npm run seed
 ```
 
+5. Arrancar servidor
+``` sh
+npm run dev
+```
+
 ### Variables de entorno a configurar:
 
 ``` sh
